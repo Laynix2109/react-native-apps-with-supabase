@@ -1,0 +1,136 @@
+{
+  "$comment": [
+    "MUSTER / TEMPLATE fuer den Output von scripts/deduplicate_and_parse.py.",
+    "Das Skript fuellt 'meta', 'files', 'duplicateGroups' und alle 'signals'.",
+    "'classification' ist nach dem Skriptlauf ueberall null/pending — der Agent",
+    "(SKILL.md) fuellt category / componentName / reactNative / status.",
+    "Pro 'templateHash' existiert genau EIN Eintrag in 'components'; identische",
+    "Bausteine sind ueber 'occurrences'/'instances' zusammengefasst (Konsolidierung)."
+  ],
+  "meta": {
+    "generatedBy": "deduplicate_and_parse.py",
+    "generatedAt": "2026-06-10T00:00:00+00:00",
+    "attribute": "cdd-id",
+    "targetFramework": "react-native",
+    "prototypeRoot": "docs/ui/prototypes/<app-name>",
+    "stats": {
+      "files": 4,
+      "visibleElements": 88,
+      "uniqueTemplates": 42,
+      "duplicateGroups": 18,
+      "duplicateInstances": 46
+    }
+  },
+  "files": [
+    {
+      "path": "auth/landing.html",
+      "sha256": "<sha256 der Rohdatei — Basis fuer Delta-Erkennung>",
+      "visibleElements": 17,
+      "exactDuplicateOf": null
+    }
+  ],
+  "duplicateGroups": [
+    {
+      "templateId": "tmpl-004",
+      "templateHash": "<12-hex skeleton hash>",
+      "canonicalCddId": "cdd-33b17f20",
+      "occurrences": 7,
+      "memberCddIds": [
+        "cdd-33b17f20", "cdd-b3beaf1b", "cdd-3614f7e1", "cdd-6b315d3c",
+        "cdd-aec9feff", "cdd-ed383bc9", "cdd-933a0749"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "$example": "ATOM — Blattknoten, mappt auf genau eine RN-Primitive.",
+      "templateId": "tmpl-004",
+      "templateHash": "<skeleton hash: tag+klassen+kinderstruktur, OHNE text>",
+      "canonicalCddId": "cdd-33b17f20",
+      "tag": "button",
+      "classList": ["btn", "btn-primary"],
+      "occurrences": 7,
+      "signals": {
+        "childElementCount": 0,
+        "childTags": [],
+        "maxDepthBelow": 0,
+        "isInteractive": true,
+        "isFormContainer": false,
+        "isSectioning": false,
+        "hasDirectText": true,
+        "textLength": 12,
+        "childComponentTemplateHashes": []
+      },
+      "classification": {
+        "category": null,
+        "componentName": null,
+        "reactNative": null,
+        "status": "pending"
+      },
+      "instances": [
+        {
+          "cddId": "cdd-33b17f20",
+          "file": "auth/landing.html",
+          "domPath": "html>body>main>div>button[1]",
+          "exactHash": "<hash inkl. text>",
+          "isExactDuplicateOfCanonical": true,
+          "textSample": "Jetzt starten"
+        }
+      ]
+    },
+    {
+      "$example": "MOLEKUEL — flache Gruppe aus Atomen (label + input).",
+      "templateId": "tmpl-018",
+      "templateHash": "<...>",
+      "canonicalCddId": "cdd-37dd3433",
+      "tag": "div",
+      "classList": ["field"],
+      "occurrences": 5,
+      "signals": {
+        "childElementCount": 2,
+        "childTags": ["label", "input"],
+        "maxDepthBelow": 1,
+        "isInteractive": false,
+        "isFormContainer": false,
+        "isSectioning": false,
+        "hasDirectText": false,
+        "textLength": 0,
+        "childComponentTemplateHashes": ["5e807ac1650a", "ae2a4d9dab19"]
+      },
+      "classification": {
+        "category": null,
+        "componentName": null,
+        "reactNative": null,
+        "status": "pending"
+      },
+      "instances": []
+    },
+    {
+      "$example": "ORGANISMUS — enthaelt mind. ein Molekuel (form mit Feldern + Button).",
+      "templateId": "tmpl-017",
+      "templateHash": "<...>",
+      "canonicalCddId": "cdd-5c7643776d42",
+      "tag": "form",
+      "classList": ["auth-form"],
+      "occurrences": 1,
+      "signals": {
+        "childElementCount": 3,
+        "childTags": ["div", "div", "button"],
+        "maxDepthBelow": 2,
+        "isInteractive": false,
+        "isFormContainer": true,
+        "isSectioning": true,
+        "hasDirectText": false,
+        "textLength": 0,
+        "childComponentTemplateHashes": ["234935a94552", "b6ecdb9415d7"]
+      },
+      "classification": {
+        "category": null,
+        "componentName": null,
+        "reactNative": null,
+        "status": "pending"
+      },
+      "instances": []
+    }
+  ]
+}

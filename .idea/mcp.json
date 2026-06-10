@@ -1,0 +1,19 @@
+{
+  "servers": {
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?project_ref=iifgoainwfsapvizdqgh"
+    },
+    "storybook-mcp-server": {
+      "url": "http://localhost:6006/mcp",
+      "type": "http"
+    }
+  },
+  "inputs": [
+    {
+      "id": "supabase-project-ref",
+      "type": "promptString",
+      "description": "Supabase project ref (for example: abcdefghijklmnop)"
+    }
+  ]
+}

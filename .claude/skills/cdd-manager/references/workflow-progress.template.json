@@ -1,0 +1,113 @@
+{
+  "$comment": [
+    "MUSTER / TEMPLATE fuer das Gedaechtnis (Checkpoint-System) des Agenten.",
+    "Diese Datei zeigt den ANGESTREBTEN Endzustand nach Klassifizierung +",
+    "Konsolidierung. Die tatsaechliche Arbeitsdatei liegt unter output/workflow-progress.json.",
+    "",
+    "DELTA-PROTOKOLL (was bei geaenderten Datei-Hashes passiert):",
+    "  1. 'fileHashes' alt<->neu vergleichen. Unveraenderte Dateien werden",
+    "     komplett uebersprungen (Komponenten bleiben 'implemented').",
+    "  2. Nur geaenderte Dateien diffen (templateHash-Mengen):",
+    "       neuer templateHash      -> neue Komponente (status: pending)",
+    "       templateHash entfernt    -> status: deprecated",
+    "       gleicher templateHash,",
+    "         nur exactHash anders   -> nur Text geaendert => KEINE Neugenerierung,",
+    "                                   Text ist ein Prop; nur Instanzen aktualisieren",
+    "       gleich + gleiche Instanzen -> unveraendert, nichts tun",
+    "",
+    "BONUS — DEPENDENCY-TRACKING (Atom -> Molekuel -> Organismus):",
+    "  Die cdd-id ist aus dem DOM-Pfad abgeleitet und damit stabil: eine",
+    "  strukturelle Aenderung betrifft nur das Element + seine Vorfahren.",
+    "  Aendert sich der templateHash eines ATOMS (z.B. PrimaryButton), wird ueber",
+    "  'usedBy' die transitive Huelle bestimmt und NUR diese Komponenten auf",
+    "  'needs-review' gesetzt. Beispiel: aendert sich tmpl-004 (PrimaryButton), so",
+    "  muessen tmpl-038 (WorkoutCard) und tmpl-017 (AuthForm) neu generiert werden -",
+    "  alle uebrigen Komponenten bleiben unangetastet. So generiert der nachgelagerte",
+    "  LLM nur das tatsaechlich Veraenderte neu (minimale Kosten)."
+  ],
+  "schemaVersion": 1,
+  "meta": {
+    "generatedAt": "2026-06-10T00:00:00+00:00",
+    "prototypeRoot": "docs/ui/prototypes/<app-name>",
+    "targetFramework": "react-native",
+    "sourceReport": "output/deduplicated-components.json",
+    "sourceReportStats": { "files": 4, "uniqueTemplates": 42, "duplicateGroups": 18 }
+  },
+  "currentState": {
+    "phase": "classified",
+    "totals": {
+      "components": 42,
+      "atoms": 0,
+      "molecules": 0,
+      "organisms": 0,
+      "implemented": 0,
+      "pending": 42
+    },
+    "lastRun": 1
+  },
+  "fileHashes": {
+    "auth/landing.html": "<sha256>",
+    "auth/registration.html": "<sha256>",
+    "auth/login.html": "<sha256>",
+    "overview/overview.html": "<sha256>"
+  },
+  "components": {
+    "tmpl-004": {
+      "category": "atom",
+      "componentName": "PrimaryButton",
+      "reactNative": { "primitive": "Pressable", "targetPath": "packages/shared-components/src/PrimaryButton.tsx" },
+      "canonicalCddId": "cdd-33b17f20",
+      "templateHash": "<...>",
+      "occurrences": 7,
+      "instanceCddIds": ["cdd-33b17f20", "cdd-b3beaf1b", "cdd-3614f7e1"],
+      "props": ["label"],
+      "dependsOn": [],
+      "usedBy": ["tmpl-017", "tmpl-028", "tmpl-038"],
+      "status": "implemented",
+      "lastChangedRun": 1
+    },
+    "tmpl-018": {
+      "category": "molecule",
+      "componentName": "FormField",
+      "reactNative": { "primitive": "View", "targetPath": "packages/shared-components/src/FormField.tsx" },
+      "canonicalCddId": "cdd-37dd3433",
+      "templateHash": "<...>",
+      "occurrences": 5,
+      "props": ["label", "placeholder", "type"],
+      "dependsOn": ["tmpl-019", "tmpl-020"],
+      "usedBy": ["tmpl-017", "tmpl-028"],
+      "status": "implemented",
+      "lastChangedRun": 1
+    },
+    "tmpl-038": {
+      "category": "organism",
+      "componentName": "WorkoutCard",
+      "reactNative": { "primitive": "View", "targetPath": "packages/shared-components/src/WorkoutCard.tsx" },
+      "canonicalCddId": "cdd-948bf489",
+      "templateHash": "<...>",
+      "occurrences": 4,
+      "props": ["title", "difficulty", "meta", "onStart"],
+      "dependsOn": ["tmpl-039", "tmpl-042", "tmpl-004"],
+      "usedBy": ["tmpl-037"],
+      "status": "pending",
+      "lastChangedRun": 1
+    }
+  },
+  "dependencyGraph": {
+    "tmpl-017": ["tmpl-018", "tmpl-004"],
+    "tmpl-018": ["tmpl-019", "tmpl-020"],
+    "tmpl-038": ["tmpl-039", "tmpl-042", "tmpl-004"],
+    "tmpl-039": ["tmpl-040", "tmpl-041"],
+    "tmpl-037": ["tmpl-038"]
+  },
+  "deltaLog": [
+    {
+      "run": 1,
+      "ts": "2026-06-10T00:00:00+00:00",
+      "added": ["alle 42 Komponenten initial klassifiziert"],
+      "changed": [],
+      "removed": [],
+      "reclassified": []
+    }
+  ]
+}
